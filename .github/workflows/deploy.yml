@@ -1,12 +1,14 @@
-name: Deploy root site
+name: Sync portfolios and deploy root site
 
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -18,11 +20,126 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-  validate:
+  sync-portfolios:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
         uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Sync portfolios.json from textile template repos
+        id: sync
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_OWNER: ${{ github.repository_owner }}
+          ROOT_REPO: ${{ github.event.repository.name }}
+          TEMPLATE_REPO: textile-template
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+          from pathlib import Path
+
+          token = os.environ["GITHUB_TOKEN"]
+          owner = os.environ["GITHUB_OWNER"]
+          root_repo = os.environ["ROOT_REPO"]
+          template_repo = os.environ["TEMPLATE_REPO"]
+          output_file = Path(os.environ["GITHUB_OUTPUT"])
+          portfolios_path = Path("portfolios.json")
+
+          headers = {
+              "Accept": "application/vnd.github+json",
+              "Authorization": f"Bearer {token}",
+              "X-GitHub-Api-Version": "2022-11-28",
+              "User-Agent": "portfolio-sync",
+          }
+
+          def fetch_json(url: str):
+              req = urllib.request.Request(url, headers=headers)
+              with urllib.request.urlopen(req) as response:
+                  return json.load(response)
+
+          repos = []
+          page = 1
+          while True:
+              url = f"https://api.github.com/users/{owner}/repos?type=owner&per_page=100&page={page}"
+              page_items = fetch_json(url)
+              if not page_items:
+                  break
+              repos.extend(page_items)
+              page += 1
+
+          existing = json.loads(portfolios_path.read_text(encoding="utf-8")) if portfolios_path.exists() else []
+          existing_by_slug = {
+              item.get("slug"): item
+              for item in existing
+              if isinstance(item, dict) and item.get("slug")
+          }
+
+          synced = []
+          for repo in repos:
+              slug = repo.get("name", "").strip()
+              if not slug or slug == root_repo or repo.get("fork"):
+                  continue
+
+              template = repo.get("template_repository") or {}
+              if template.get("name") != template_repo:
+                  continue
+
+              previous = existing_by_slug.get(slug, {})
+              display_name = previous.get("name") or slug.replace("-", " ").title()
+              description = previous.get("description") or repo.get("description") or f"Preview collection for {display_name}."
+              watermark = previous.get("watermark") or "© Your Name"
+
+              synced.append(
+                  {
+                      "name": display_name,
+                      "slug": slug,
+                      "description": description,
+                      "cover": f"/{slug}/cover.jpg",
+                      "watermark": watermark,
+                  }
+              )
+
+          synced.sort(key=lambda item: item["name"].lower())
+          rendered = json.dumps(synced, indent=2, ensure_ascii=False) + "\n"
+          current = portfolios_path.read_text(encoding="utf-8") if portfolios_path.exists() else ""
+          changed = current != rendered
+
+          if changed:
+              portfolios_path.write_text(rendered, encoding="utf-8")
+
+          with output_file.open("a", encoding="utf-8") as fh:
+              fh.write(f"changed={'true' if changed else 'false'}\n")
+              fh.write(f"count={len(synced)}\n")
+
+          print(f"Synced {len(synced)} portfolio entries from template repo '{template_repo}'.")
+          if changed:
+              print("portfolios.json updated.")
+          else:
+              print("portfolios.json already up to date.")
+          PY
+
+      - name: Commit updated portfolios.json
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "pjprojectdev@outlook.com"
+          git add portfolios.json
+          git commit -m "chore: sync portfolios.json"
+          git push
+
+  validate:
+    needs: sync-portfolios
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v5
+        with:
+          ref: main
 
       - name: Validate portfolios.json
         run: |
@@ -65,6 +182,8 @@ jobs:
     steps:
       - name: Check out repo
         uses: actions/checkout@v5
+        with:
+          ref: main
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
