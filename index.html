@@ -1,220 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Warp & Weave — Textile Portfolio</title>
-  <meta name="description" content="A refined textile design portfolio showcasing woven, printed, and surface development collections." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Textile Studio</title>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="#top">Warp & Weave</a>
-      <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#process">Process</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+  <header class="hero">
+    <p class="eyebrow">Textile Studio</p>
+    <h1>Preview Collections</h1>
+    <p class="sub">Curated textile portfolio pages with protected preview-only images.</p>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">Textile Designer Portfolio</p>
-          <h1>Material-led collections rooted in color, structure, and tactility.</h1>
-          <p class="hero-copy">
-            A polished GitHub Pages portfolio template for showcasing woven swatches, printed repeats,
-            surface explorations, research boards, and finished textile applications.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#work">View Projects</a>
-            <a class="btn btn-secondary" href="#contact">Get in Touch</a>
-          </div>
-        </div>
-        <div class="hero-card">
-          <div class="swatch-grid" aria-hidden="true">
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <p class="hero-note">Replace this block with a hero image, loom detail, or collection photograph.</p>
-        </div>
-      </div>
+  <main class="wrap">
+    <section class="intro card-panel">
+      <h2>Collections</h2>
+      <p>Select a textile collection to view its preview gallery.</p>
     </section>
 
-    <section class="section intro-strip">
-      <div class="container intro-grid">
-        <article>
-          <h2>Specialties</h2>
-          <p>Woven development, print design, trend translation, material storytelling, and commercially aware collections.</p>
-        </article>
-        <article>
-          <h2>Selected Uses</h2>
-          <p>Interiors, fashion textiles, accessories, home goods, sampling, and concept-led seasonal presentations.</p>
-        </article>
-        <article>
-          <h2>Tools</h2>
-          <p>Adobe CC, hand rendering, jacquard planning, repeat building, yarn mapping, and physical sample development.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="work">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Portfolio</p>
-          <h2>Selected Textile Projects</h2>
-          <p>Use each card for a collection, client brief, or category of work. Swap the placeholder images and text with your own projects.</p>
-        </div>
-
-        <div class="filters" role="tablist" aria-label="Portfolio filters">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="woven">Woven</button>
-          <button class="filter-btn" data-filter="print">Print</button>
-          <button class="filter-btn" data-filter="surface">Surface</button>
-        </div>
-
-        <div class="portfolio-grid">
-          <article class="project-card" data-category="woven">
-            <div class="project-image image-1"></div>
-            <div class="project-body">
-              <p class="project-tag">Woven Collection</p>
-              <h3>Structure Study</h3>
-              <p>A collection exploring broken twills, tonal yarn blends, and layered neutrals inspired by architectural shadow.</p>
-            </div>
-          </article>
-
-          <article class="project-card" data-category="print">
-            <div class="project-image image-2"></div>
-            <div class="project-body">
-              <p class="project-tag">Printed Textiles</p>
-              <h3>Botanical Repeat Series</h3>
-              <p>Hand-drawn and digital motifs translated into balanced repeat systems for fashion and interior applications.</p>
-            </div>
-          </article>
-
-          <article class="project-card" data-category="surface">
-            <div class="project-image image-3"></div>
-            <div class="project-body">
-              <p class="project-tag">Surface Exploration</p>
-              <h3>Pleat & Texture Lab</h3>
-              <p>Experimental sampling focused on compression, stitch, pleating, and sculptural manipulation of lightweight fabrics.</p>
-            </div>
-          </article>
-
-          <article class="project-card" data-category="woven">
-            <div class="project-image image-4"></div>
-            <div class="project-body">
-              <p class="project-tag">Jacquard Development</p>
-              <h3>City Grid</h3>
-              <p>Graphic woven concepts developed from urban mapping, expressed through modular pattern and contrast scale.</p>
-            </div>
-          </article>
-
-          <article class="project-card" data-category="print">
-            <div class="project-image image-5"></div>
-            <div class="project-body">
-              <p class="project-tag">Color Story</p>
-              <h3>Summer Forecast</h3>
-              <p>Commercial print direction guided by trend research, optimistic palettes, and versatile motif placement.</p>
-            </div>
-          </article>
-
-          <article class="project-card" data-category="surface">
-            <div class="project-image image-6"></div>
-            <div class="project-body">
-              <p class="project-tag">Material Experiment</p>
-              <h3>Fiber Fusion</h3>
-              <p>Mixed-media textile studies combining paper yarn, metallic thread, and stitched overlays for statement surfaces.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt-bg" id="about">
-      <div class="container two-col">
-        <div>
-          <p class="eyebrow">About</p>
-          <h2>Designing textiles that balance concept and usability.</h2>
-        </div>
-        <div>
-          <p>
-            I create textile collections through research, swatching, sampling, and refinement. My practice connects visual inspiration
-            with material testing, producing work that feels tactile, intentional, and relevant to end use.
-          </p>
-          <p>
-            This template is built for designers who want a minimal, elegant portfolio on GitHub Pages without a heavy framework.
-            Edit the copy, swap images, and publish in minutes.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="process">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Process</p>
-          <h2>From research to final sample</h2>
-        </div>
-        <div class="process-grid">
-          <article class="process-card">
-            <span>01</span>
-            <h3>Research</h3>
-            <p>Mood boards, archive references, color extraction, market positioning, and tactile inspiration gathering.</p>
-          </article>
-          <article class="process-card">
-            <span>02</span>
-            <h3>Development</h3>
-            <p>Motif building, weave planning, repeat creation, palette selection, and quick physical or digital tests.</p>
-          </article>
-          <article class="process-card">
-            <span>03</span>
-            <h3>Sampling</h3>
-            <p>Refining scale, handle, structure, and finish through iterative sampling and material comparison.</p>
-          </article>
-          <article class="process-card">
-            <span>04</span>
-            <h3>Presentation</h3>
-            <p>Final curation of boards, swatches, end-use mockups, and concise storytelling for portfolio or client review.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section contact-section" id="contact">
-      <div class="container contact-grid">
-        <div>
-          <p class="eyebrow">Contact</p>
-          <h2>Available for freelance, collaborations, and studio opportunities.</h2>
-          <p>
-            Replace the details below with your own email, Instagram, LinkedIn, and portfolio PDF.
-          </p>
-        </div>
-        <div class="contact-card">
-          <a href="mailto:hello@yourname.com">hello@yourname.com</a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="#top">Back to top</a>
-        </div>
-      </div>
+    <section>
+      <div id="grid" class="grid"></div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-wrap">
-      <p>© 2026 Warp & Weave. Built for GitHub Pages.</p>
-      <p>Customize images, copy, and links to make it yours.</p>
-    </div>
+    <p>© 2026 Your Name. All textile designs, pattern previews, and images are protected. No reproduction, tracing, download, or commercial use without written permission.</p>
   </footer>
 
-  <script src="assets/script.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>

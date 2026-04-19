@@ -1,74 +1,30 @@
-# Textile Portfolio Website for GitHub Pages
+# Root repo: username.github.io
 
-A clean, static portfolio site for a textile designer. It is ready to publish on GitHub Pages.
+Upload these files to your GitHub repo named exactly:
 
-## Files
+`your-username.github.io`
 
-- `index.html` — main page
-- `assets/styles.css` — styling
-- `assets/script.js` — portfolio filtering
+## What this repo does
+- Serves your main homepage
+- Lists all textile portfolio repos
+- Links each card to `/repo-name/`
 
-## How to publish on GitHub Pages
+## When adding a new textile repo
+1. Create a new repo from the textile template
+2. Enable GitHub Pages for that repo
+3. Add one more entry to `portfolios.json`
 
-1. Create a new GitHub repository.
-2. Upload all files from this folder to the repository root.
-3. Commit and push.
-4. In GitHub, open **Settings → Pages**.
-5. Under **Build and deployment**, choose:
-   - **Source:** Deploy from a branch
-   - **Branch:** `main` / `(root)`
-6. Save.
-7. Your site will be published at your GitHub Pages URL.
+## Important
+The cover image path should match the repo slug:
 
-## How to customize
+- repo: `ikat-blue`
+- cover path: `/ikat-blue/cover.jpg`
 
-### 1. Change the site name
-Edit this text in `index.html`:
-- `Warp & Weave`
+## Protection note
+This starter adds friction against casual copying:
+- visible preview-only watermark label
+- disabled right-click
+- disabled image dragging
+- blocks a few common browser shortcuts
 
-### 2. Change project text
-Search for these sample project titles and replace them:
-- `Structure Study`
-- `Botanical Repeat Series`
-- `Pleat & Texture Lab`
-- `City Grid`
-- `Summer Forecast`
-- `Fiber Fusion`
-
-### 3. Replace placeholder project images
-Right now the cards use gradient backgrounds.
-To use your own images:
-
-- Add your images to an `assets/` or `images/` folder
-- Replace each `.project-image` block with an `<img>` tag, for example:
-
-```html
-<div class="project-image">
-  <img src="assets/project-1.jpg" alt="Woven textile sample in neutral tones" />
-</div>
-```
-
-Then remove the gradient helper classes like `image-1`, `image-2`, etc.
-
-### 4. Update contact links
-Replace:
-- `hello@yourname.com`
-- Instagram URL
-- LinkedIn URL
-
-### 5. Add more sections
-You can easily add:
-- CV / resume
-- downloadable PDF portfolio
-- client list
-- exhibitions
-- awards
-- shop link
-
-## Best next upgrade ideas
-
-- add a dedicated project detail page for each collection
-- include real textile photography and close-up swatch images
-- add a lightbox gallery
-- add a downloadable PDF portfolio
-- connect a custom domain
+This does **not** stop determined copying. Use low-resolution previews, cropping, watermarking, and legal protection for real protection.
