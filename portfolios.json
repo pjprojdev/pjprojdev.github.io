@@ -1,16 +1,16 @@
 [
   {
-    "name": "Ikat Blue",
-    "slug": "ikat-blue",
-    "description": "Indigo ikat studies and protected preview swatches.",
-    "cover": "/ikat-blue/cover.jpg",
-    "watermark": "© Your Name"
-  },
-  {
     "name": "Blockprint Earth",
     "slug": "blockprint-earth",
     "description": "Hand block explorations, layered repeats, and motif previews.",
     "cover": "/blockprint-earth/cover.jpg",
+    "watermark": "© Your Name"
+  },
+  {
+    "name": "Ikat Blue",
+    "slug": "ikat-blue",
+    "description": "Indigo ikat studies and protected preview swatches.",
+    "cover": "/ikat-blue/cover.jpg",
     "watermark": "© Your Name"
   }
 ]
