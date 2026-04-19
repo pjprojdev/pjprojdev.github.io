@@ -4,13 +4,20 @@
     "slug": "blockprint-earth",
     "description": "Hand block explorations, layered repeats, and motif previews.",
     "cover": "/blockprint-earth/cover.jpg",
-    "watermark": "© Your Name"
+    "watermark": "© ajithendra"
   },
   {
     "name": "Ikat Blue",
     "slug": "ikat-blue",
     "description": "Indigo ikat studies and protected preview swatches.",
     "cover": "/ikat-blue/cover.jpg",
-    "watermark": "© Your Name"
+    "watermark": "© ajithendra"
+  },
+  {
+    "name": "Ikat Semiblue",
+    "slug": "ikat-semiblue",
+    "description": "Semi-blue ikat studies and protected preview swatches.",
+    "cover": "/ikat-semiblue/cover.jpg",
+    "watermark": "© ajithendra"
   }
 ]

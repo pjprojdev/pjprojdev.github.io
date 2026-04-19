@@ -30,7 +30,7 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Sync portfolios.json from textile template repos
+      - name: Merge portfolios.json with textile template repos
         id: sync
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -122,7 +122,7 @@ jobs:
               fh.write(f"changed={'true' if changed else 'false'}\n")
               fh.write(f"count={len(synced)}\n")
 
-          print(f"Synced {len(synced)} portfolio entries from template repo '{template_repo}'.")
+          print(f"Merged {len(synced)} portfolio entries using existing portfolios.json and template repo '{template_repo}'.")
           if changed:
               print("portfolios.json updated.")
           else:
