@@ -14,12 +14,15 @@ concurrency:
   group: "pages-root"
   cancel-in-progress: true
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Validate portfolios.json
         run: |
@@ -48,26 +51,29 @@ jobs:
           print("portfolios.json is valid")
           PY
 
-      - name: Ensure index.html exists
-        run: test -f index.html
+      - name: Ensure required files exist
+        run: |
+          test -f index.html
+          test -f styles.css
+          test -f app.js
 
-  build-and-deploy:
+  deploy:
     needs: validate
     runs-on: ubuntu-latest
     environment:
       name: github-pages
     steps:
       - name: Check out repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - name: Configure GitHub Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload Pages artifact
+      - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
